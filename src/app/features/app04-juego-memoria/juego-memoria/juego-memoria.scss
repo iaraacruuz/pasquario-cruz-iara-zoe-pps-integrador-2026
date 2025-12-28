@@ -1,0 +1,17 @@
+.app-container {
+  padding: 20px;
+  min-height: calc(100vh - 70px);
+  
+  h1 {
+    color: var(--ion-color-primary);
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  p {
+    color: var(--ion-text-color);
+    text-align: center;
+    opacity: 0.7;
+  }
+}

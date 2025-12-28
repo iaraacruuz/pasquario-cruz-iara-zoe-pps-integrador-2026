@@ -13,7 +13,6 @@ import { SoundService } from '../../../core/services/sound';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class NavbarComponent {
-  showMenu = false;
 
   constructor(
     private authService: AuthService,
@@ -21,13 +20,17 @@ export class NavbarComponent {
     private router: Router
   ) {}
 
-  toggleMenu() {
-    this.showMenu = !this.showMenu;
-  }
-
   async logout() {
+    // Reproducir sonido de cierre (diferente al de inicio)
     this.soundService.play('cierre');
+    
+    // Esperar un momento para que se escuche el sonido
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    // Cerrar sesión
     await this.authService.logout();
+    
+    // Navegar al login
     this.router.navigate(['/login']);
   }
 

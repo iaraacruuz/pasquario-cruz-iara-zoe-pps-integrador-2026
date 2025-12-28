@@ -7,20 +7,17 @@
 
     <div class="navbar-actions">
       <div class="user-info" *ngIf="currentUser">
-        <span class="user-perfil">{{ currentUser.perfil }}</span>
-        <span class="user-email">{{ currentUser.correo }}</span>
+        <ion-icon name="person-circle" class="user-icon"></ion-icon>
+        <div class="user-details">
+          <span class="user-perfil">{{ currentUser.perfil }}</span>
+          <span class="user-email">{{ currentUser.correo }}</span>
+        </div>
       </div>
 
-      <button class="btn-menu" (click)="toggleMenu()">
-        <ion-icon [name]="showMenu ? 'close' : 'menu'"></ion-icon>
+      <button class="btn-logout" (click)="logout()" title="Cerrar sesión">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <span class="logout-text">Salir</span>
       </button>
     </div>
-  </div>
-
-  <div class="navbar-menu" [class.show]="showMenu">
-    <button class="menu-item" (click)="logout()">
-      <ion-icon name="log-out"></ion-icon>
-      <span>Cerrar sesión</span>
-    </button>
   </div>
 </nav>
