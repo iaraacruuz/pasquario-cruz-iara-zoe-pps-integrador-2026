@@ -1,0 +1,76 @@
+.message-container {
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0;
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+
+  .message-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .message-text {
+    flex: 1;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .btn-dismiss {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+
+  &.error {
+    background: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #c62828;
+  }
+
+  &.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+  }
+
+  &.warning {
+    background: #fff3e0;
+    color: #ef6c00;
+    border-left: 4px solid #ef6c00;
+  }
+
+  &.info {
+    background: #e3f2fd;
+    color: #1565c0;
+    border-left: 4px solid #1565c0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<div class="home-container">
+  <div class="home-header">
+    <h1>Integrador PPS 2026</h1>
+    <p>Selecciona una aplicación para comenzar</p>
+  </div>
+
+  <div class="apps-grid">
+    <div
+      *ngFor="let app of apps"
+      class="app-card"
+      [style.background]="app.color"
+      (click)="navigateToApp(app)"
+    >
+      <div class="app-icon">
+        <ion-icon [name]="app.icono"></ion-icon>
+      </div>
+      <div class="app-info">
+        <h3 class="app-nombre">{{ app.nombre }}</h3>
+        <p class="app-descripcion">{{ app.descripcion }}</p>
+      </div>
+      <div class="app-number">{{ app.id }}</div>
+    </div>
+  </div>
+</div>

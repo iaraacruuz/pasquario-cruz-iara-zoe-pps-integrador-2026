@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="navbar-brand">
+      <img src="assets/images/logo.png" alt="Logo" class="logo" />
+      <span class="brand-name">PPS Integrador</span>
+    </div>
+
+    <div class="navbar-actions">
+      <div class="user-info" *ngIf="currentUser">
+        <span class="user-perfil">{{ currentUser.perfil }}</span>
+        <span class="user-email">{{ currentUser.correo }}</span>
+      </div>
+
+      <button class="btn-menu" (click)="toggleMenu()">
+        <ion-icon [name]="showMenu ? 'close' : 'menu'"></ion-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="navbar-menu" [class.show]="showMenu">
+    <button class="menu-item" (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+      <span>Cerrar sesión</span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,19 @@
+<div class="splash-container" [class.animated]="showAnimated">
+  <div class="splash-content">
+    <!-- Logo de la aplicación -->
+    <div class="logo-container">
+      <img src="assets/images/logo.png" alt="Logo" class="logo" />
+    </div>
+
+    <!-- Información del alumno -->
+    <div class="info-container">
+      <h1 class="alumno-nombre">Pasquario Cruz Iara Zoe</h1>
+      <p class="division">División 4A</p>
+    </div>
+
+    <!-- Indicador de carga animado -->
+    <div class="loading-indicator" *ngIf="showAnimated">
+      <div class="spinner"></div>
+    </div>
+  </div>
+</div>

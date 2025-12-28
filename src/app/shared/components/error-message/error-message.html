@@ -1,0 +1,7 @@
+<div class="message-container" [class]="type" *ngIf="message">
+  <ion-icon [name]="iconName" class="message-icon"></ion-icon>
+  <p class="message-text">{{ message }}</p>
+  <button *ngIf="dismissible" class="btn-dismiss" (click)="onDismiss()">
+    <ion-icon name="close"></ion-icon>
+  </button>
+</div>
