@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,7 +11,8 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   imports: [CommonModule, FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
-  standalone: true
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginComponent {
   email: string = '';

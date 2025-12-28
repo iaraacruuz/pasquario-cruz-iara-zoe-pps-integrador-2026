@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth';
@@ -9,7 +9,8 @@ import { SoundService } from '../../../core/services/sound';
   imports: [CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
-  standalone: true
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class NavbarComponent {
   showMenu = false;

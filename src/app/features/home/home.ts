@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../../shared/components/navbar/navbar';
@@ -18,7 +18,8 @@ interface App {
   imports: [CommonModule, NavbarComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss',
-  standalone: true
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent {
   apps: App[] = [
