@@ -7,5 +7,9 @@ export const environment = {
     storageBucket: "TU_STORAGE_BUCKET",
     messagingSenderId: "TU_MESSAGING_SENDER_ID",
     appId: "TU_APP_ID"
+  },
+  supabase: {
+    url: "TU_SUPABASE_URL",
+    anonKey: "TU_SUPABASE_ANON_KEY"
   }
 };

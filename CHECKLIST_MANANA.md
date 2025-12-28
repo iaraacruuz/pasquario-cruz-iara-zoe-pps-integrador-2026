@@ -2,75 +2,25 @@
 
 ## 🔥 PRIMERAS 3 TAREAS (1 hora máximo)
 
-### 1. Configurar Firebase (30 min) ⏰
+### 1. Configurar Supabase (40 min) ⏰
 
-#### Paso 1: Crear proyecto
-1. Ir a: https://console.firebase.google.com
-2. Click en "Agregar proyecto"
-3. Nombre: `pps-integrador-2026`
-4. Deshabilitar Google Analytics (opcional)
-5. Click en "Crear proyecto"
+**Lee la guía completa en**: `SUPABASE_SETUP.md`
 
-#### Paso 2: Habilitar Authentication
-1. En el menú lateral → Build → Authentication
-2. Click en "Comenzar"
-3. Click en "Email/Password"
-4. Habilitar "Email/Password"
-5. Guardar
+**Resumen rápido**:
+1. Crear cuenta en https://supabase.com (2 min)
+2. Crear proyecto `pps-integrador-2026` (3 min)
+3. Copiar credenciales (URL + anon key) a `environment.ts` (2 min)
+4. Crear tablas SQL (15 min)
+5. Crear 5 usuarios de autenticación (5 min)
+6. Configurar storage buckets (5 min)
+7. Probar conexión (5 min)
 
-#### Paso 3: Crear usuarios de prueba
-En Authentication → Users → Add user, crear:
-```
-✅ admin@admin.com      / 111111
-✅ invitado@invitado.com / 222222
-✅ usuario@usuario.com   / 333333
-✅ anonimo@anonimo.com   / 444444
-✅ tester@tester.com     / 555555
-```
-
-#### Paso 4: Habilitar Firestore
-1. En el menú lateral → Build → Firestore Database
-2. Click en "Crear base de datos"
-3. Seleccionar "Modo de producción"
-4. Ubicación: us-central (o la más cercana)
-5. Click en "Habilitar"
-
-#### Paso 5: Habilitar Storage
-1. En el menú lateral → Build → Storage
-2. Click en "Comenzar"
-3. Seleccionar "Modo de producción"
-4. Click en "Siguiente"
-5. Ubicación: us-central
-6. Click en "Listo"
-
-#### Paso 6: Copiar credenciales
-1. Click en el ícono de engranaje (⚙️) → Project settings
-2. Scroll hasta "Your apps"
-3. Click en el ícono web (</>) para añadir una web app
-4. Nombre: `pps-integrador-2026`
-5. NO marcar "Firebase Hosting"
-6. Click en "Registrar app"
-7. **COPIAR TODO EL OBJETO firebaseConfig**
-
-#### Paso 7: Pegar en el proyecto
-Abrir: `src/environments/environment.ts`
-
-Reemplazar:
-```typescript
-export const environment = {
-  production: false,
-  firebase: {
-    apiKey: "PEGAR_AQUI",
-    authDomain: "PEGAR_AQUI",
-    projectId: "PEGAR_AQUI",
-    storageBucket: "PEGAR_AQUI",
-    messagingSenderId: "PEGAR_AQUI",
-    appId: "PEGAR_AQUI"
-  }
-};
-```
-
-Hacer lo mismo en: `src/environments/environment.prod.ts`
+**¿Por qué Supabase?**
+- ✅ 100% GRATIS (hasta 500MB)
+- ✅ Base de datos PostgreSQL (más potente)
+- ✅ Realtime incluido (para chat)
+- ✅ Open source
+- ✅ Panel admin súper intuitivo
 
 ---
 
