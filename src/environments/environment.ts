@@ -9,7 +9,7 @@ export const environment = {
     appId: "TU_APP_ID"
   },
   supabase: {
-    url: "TU_SUPABASE_URL",
-    anonKey: "TU_SUPABASE_ANON_KEY"
+    url: "https://ddukfepfkvkiqyvnjesg.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkdWtmZXBma3ZraXF5dm5qZXNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY5NTU0MDEsImV4cCI6MjA4MjUzMTQwMX0.o5Kh2dHbLqlSG7SFHb0Ei3-DzLzgu341M1DNPv_TvVs"
   }
 };
