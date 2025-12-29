@@ -1,5 +1,90 @@
 <app-navbar></app-navbar>
+
 <div class="app-container">
-  <h1>Relevamiento Visual</h1>
-  <p>Esta aplicación permitirá tomar fotos y almacenarlas.</p>
+  <div class="header">
+    <h1>📸 Relevamiento Visual</h1>
+    <p>Toma fotos y clasifícalas como lindas o feas</p>
+  </div>
+
+  <!-- Botones para tomar/seleccionar foto -->
+  <div class="actions" *ngIf="!mostrarClasificacion">
+    <button class="btn btn-camera" (click)="tomarFoto()" [disabled]="cargando">
+      <ion-icon name="camera"></ion-icon>
+      <span>Tomar Foto</span>
+    </button>
+    <button class="btn btn-gallery" (click)="seleccionarFoto()" [disabled]="cargando">
+      <ion-icon name="images"></ion-icon>
+      <span>Seleccionar Foto</span>
+    </button>
+  </div>
+
+  <!-- Vista previa y clasificación -->
+  <div class="preview-container" *ngIf="mostrarClasificacion && fotoActual">
+    <h3>¿Cómo clasificas esta foto?</h3>
+    <img [src]="fotoActual" alt="Foto tomada" class="preview-image" />
+    
+    <div class="clasificacion-buttons">
+      <button class="btn btn-linda" (click)="guardarFoto('linda')" [disabled]="cargando">
+        <ion-icon name="heart"></ion-icon>
+        <span>Linda</span>
+      </button>
+      <button class="btn btn-fea" (click)="guardarFoto('fea')" [disabled]="cargando">
+        <ion-icon name="thumbs-down"></ion-icon>
+        <span>Fea</span>
+      </button>
+      <button class="btn btn-cancel" (click)="cancelar()" [disabled]="cargando">
+        <ion-icon name="close"></ion-icon>
+        <span>Cancelar</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Spinner de carga -->
+  <div class="loading" *ngIf="cargando">
+    <div class="spinner"></div>
+    <p>Procesando...</p>
+  </div>
+
+  <!-- Estadísticas -->
+  <div class="stats" *ngIf="fotos.length > 0">
+    <div class="stat-card linda">
+      <ion-icon name="heart"></ion-icon>
+      <span class="stat-number">{{ fotosLindas.length }}</span>
+      <span class="stat-label">Lindas</span>
+    </div>
+    <div class="stat-card fea">
+      <ion-icon name="thumbs-down"></ion-icon>
+      <span class="stat-number">{{ fotosFeas.length }}</span>
+      <span class="stat-label">Feas</span>
+    </div>
+    <div class="stat-card total">
+      <ion-icon name="images"></ion-icon>
+      <span class="stat-number">{{ fotos.length }}</span>
+      <span class="stat-label">Total</span>
+    </div>
+  </div>
+
+  <!-- Lista de fotos -->
+  <div class="fotos-list" *ngIf="fotos.length > 0">
+    <h3>📋 Historial de Fotos</h3>
+    
+    <div class="foto-card" *ngFor="let foto of fotos" [class.linda]="foto.clasificacion === 'linda'" [class.fea]="foto.clasificacion === 'fea'">
+      <img [src]="foto.url" [alt]="'Foto ' + foto.clasificacion" />
+      <div class="foto-info">
+        <div class="clasificacion-badge" [class.linda]="foto.clasificacion === 'linda'" [class.fea]="foto.clasificacion === 'fea'">
+          <ion-icon [name]="foto.clasificacion === 'linda' ? 'heart' : 'thumbs-down'"></ion-icon>
+          <span>{{ foto.clasificacion === 'linda' ? 'Linda' : 'Fea' }}</span>
+        </div>
+        <span class="fecha">{{ foto.fecha | date:'dd/MM/yyyy HH:mm' }}</span>
+        <span class="usuario">{{ foto.usuario_email }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje cuando no hay fotos -->
+  <div class="empty-state" *ngIf="fotos.length === 0 && !cargando">
+    <ion-icon name="camera-outline"></ion-icon>
+    <h3>No hay fotos todavía</h3>
+    <p>Toma tu primera foto para comenzar</p>
+  </div>
 </div>
