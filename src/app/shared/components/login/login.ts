@@ -57,6 +57,10 @@ export class LoginComponent {
     await this.login();
   }
 
+  irAPruebas() {
+    this.router.navigate(['/test-supabase']);
+  }
+
   private async showError(message: string) {
     this.errorMessage = message;
     this.soundService.play('error');

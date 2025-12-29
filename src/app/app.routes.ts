@@ -16,6 +16,10 @@ export const routes: Routes = [
     loadComponent: () => import('./shared/components/login/login').then(m => m.LoginComponent)
   },
   {
+    path: 'test-supabase',
+    loadComponent: () => import('./features/test-supabase/test-supabase').then(m => m.TestSupabaseComponent)
+  },
+  {
     path: 'home',
     loadComponent: () => import('./features/home/home').then(m => m.HomeComponent),
     canActivate: [authGuard]

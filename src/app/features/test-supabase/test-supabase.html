@@ -1,0 +1,144 @@
+<div class="test-container">
+  <div class="test-header">
+    <h1>🧪 Pruebas de Supabase</h1>
+    <p>Verificación de conexión y funcionalidad</p>
+  </div>
+
+  <!-- Botones de control -->
+  <div class="test-controls">
+    <button class="btn btn-primary" (click)="probarTodo()">
+      <ion-icon name="play-circle"></ion-icon>
+      Ejecutar Todas las Pruebas
+    </button>
+    <button class="btn btn-secondary" (click)="resetearPruebas()">
+      <ion-icon name="refresh"></ion-icon>
+      Resetear
+    </button>
+  </div>
+
+  <!-- Resultado general -->
+  <div class="result-summary" *ngIf="todasLasPruebasExitosas">
+    <ion-icon name="checkmark-circle" class="success-icon"></ion-icon>
+    <h2>¡Supabase está funcionando perfectamente! ✅</h2>
+    <p>Todas las pruebas pasaron correctamente. Puedes continuar con el desarrollo.</p>
+  </div>
+
+  <!-- Prueba 1: Login -->
+  <div class="test-card" [class]="getStatusClass(loginStatus)">
+    <div class="test-card-header">
+      <div class="test-info">
+        <ion-icon [name]="getStatusIcon(loginStatus)" class="test-icon"></ion-icon>
+        <h3>1️⃣ Prueba de Login</h3>
+      </div>
+      <button 
+        class="btn btn-small" 
+        (click)="probarLogin()"
+        [disabled]="loginStatus === 'corriendo'"
+      >
+        <ion-icon name="play"></ion-icon>
+        Probar
+      </button>
+    </div>
+    <div class="test-card-body">
+      <p class="test-description">
+        Verifica que la autenticación funcione con los usuarios de prueba
+      </p>
+      <div class="test-message" *ngIf="loginMessage">
+        {{ loginMessage }}
+      </div>
+      <div class="user-info" *ngIf="currentUser">
+        <strong>Usuario logueado:</strong><br>
+        Perfil: {{ currentUser.perfil }}<br>
+        Correo: {{ currentUser.correo }}<br>
+        Sexo: {{ currentUser.sexo }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Prueba 2: Insert -->
+  <div class="test-card" [class]="getStatusClass(insertStatus)">
+    <div class="test-card-header">
+      <div class="test-info">
+        <ion-icon [name]="getStatusIcon(insertStatus)" class="test-icon"></ion-icon>
+        <h3>2️⃣ Prueba de INSERT</h3>
+      </div>
+      <button 
+        class="btn btn-small" 
+        (click)="probarInsert()"
+        [disabled]="insertStatus === 'corriendo'"
+      >
+        <ion-icon name="play"></ion-icon>
+        Probar
+      </button>
+    </div>
+    <div class="test-card-body">
+      <p class="test-description">
+        Inserta un nuevo registro en la tabla prueba_conexion
+      </p>
+      <div class="test-message" *ngIf="insertMessage">
+        {{ insertMessage }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Prueba 3: Select -->
+  <div class="test-card" [class]="getStatusClass(selectStatus)">
+    <div class="test-card-header">
+      <div class="test-info">
+        <ion-icon [name]="getStatusIcon(selectStatus)" class="test-icon"></ion-icon>
+        <h3>3️⃣ Prueba de SELECT</h3>
+      </div>
+      <button 
+        class="btn btn-small" 
+        (click)="probarSelect()"
+        [disabled]="selectStatus === 'corriendo'"
+      >
+        <ion-icon name="play"></ion-icon>
+        Probar
+      </button>
+    </div>
+    <div class="test-card-body">
+      <p class="test-description">
+        Trae los últimos 10 registros de la tabla prueba_conexion
+      </p>
+      <div class="test-message" *ngIf="selectMessage">
+        {{ selectMessage }}
+      </div>
+      <div class="data-table" *ngIf="datos.length > 0">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Mensaje</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dato of datos">
+              <td>{{ dato.id }}</td>
+              <td>{{ dato.mensaje }}</td>
+              <td>{{ dato.fecha | date:'dd/MM/yyyy HH:mm:ss' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Información adicional -->
+  <div class="info-box">
+    <h4>📌 Información</h4>
+    <p>
+      <strong>Base de datos:</strong> Supabase (PostgreSQL)<br>
+      <strong>Proyecto:</strong> ddukfepfkvkiqyvnjesg<br>
+      <strong>Tabla de prueba:</strong> prueba_conexion<br>
+      <strong>Usuario de prueba:</strong> admin@admin.com / 111111
+    </p>
+    <p class="note">
+      💡 <strong>Nota:</strong> Si alguna prueba falla, verifica que:
+      <br>1. La tabla 'prueba_conexion' existe en Supabase
+      <br>2. Las credenciales en environment.ts son correctas
+      <br>3. El usuario admin@admin.com existe en la base de datos
+    </p>
+  </div>
+</div>
