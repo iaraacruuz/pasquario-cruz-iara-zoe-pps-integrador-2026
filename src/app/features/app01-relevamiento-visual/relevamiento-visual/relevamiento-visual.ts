@@ -92,23 +92,18 @@ export class RelevamientoVisual implements OnInit {
     try {
       this.cargando = true;
 
+      // Convertir dataURL a Blob
+      const blob = this.dataURLtoBlob(this.fotoActual);
+      
       // Subir imagen a Supabase Storage
       const fileName = `foto_${Date.now()}.jpg`;
-      const uploadResult = await this.storage.uploadImage(
-        'imagenes',
-        fileName,
-        this.fotoActual
-      );
-
-      if (!uploadResult.success || !uploadResult.url) {
-        throw new Error('Error al subir imagen');
-      }
+      const publicUrl = await this.storage.uploadImage(blob, 'relevamiento', fileName);
 
       // Guardar registro en base de datos
       const usuarioEmail = localStorage.getItem('currentUser') || 'anonimo@anonimo.com';
       
       const nuevaFoto: Foto = {
-        url: uploadResult.url,
+        url: publicUrl,
         clasificacion: clasificacion,
         usuario_email: usuarioEmail
       };
@@ -131,6 +126,20 @@ export class RelevamientoVisual implements OnInit {
     } finally {
       this.cargando = false;
     }
+  }
+
+  dataURLtoBlob(dataURL: string): Blob {
+    const parts = dataURL.split(',');
+    const byteString = atob(parts[1]);
+    const mimeString = parts[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    
+    return new Blob([ab], { type: mimeString });
   }
 
   cancelar() {
